@@ -1,5 +1,6 @@
 package com.luv2code.springdemo.controller;
 
+import java.lang.annotation.Target;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,6 +74,16 @@ public class CustomerController {
 		// send over to our form		
 		return "customer-form";
 	}
+	
+	@GetMapping("/delete")
+	public String DeleteCustomer(@RequestParam("customerId") int theId) {
+			
+			// delete the customer using our service
+			customerService.deleteCustomer(theId);
+			
+			
+			return "redirect:/customer/list";
+		}
 
 	
 }
